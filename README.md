@@ -2,7 +2,7 @@
 
 ---
 
-A web based application which enrypts text using the vigenere cipher.
+A web based encryption app implemented with the vigenere cipher.
 
 A **How to encrypt text** 🔒
 
