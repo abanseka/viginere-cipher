@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://kit.fontawesome.com/65eb18f183.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Cipher</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="side-image-container">
+      <img class="side-image" src="/images/karsten-winegeart.jpg" />
+    </div>
+    <main class="app-container">
+      <div class="text-container component-field">
+        <textarea class="text-display input__text" type="text"></textarea>
+      </div>
+      <div class="button-container component-field">
+        <input class="key" type="text" placeholder="key" />
+        <button class="button encrypt-btn">
+          <i class="fas fa-lock"></i>
+        </button>
+        <button class="button decrypt-btn">
+          <i class="fas fa-unlock"></i>
+        </button>
+        <button class="button compare-btn">
+          <i class="fas fa-sort"></i>
+        </button>
+        <button class="button refresh-btn">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+      </div>
+      <div class="text-container component-field">
+        <textarea class="text-display output__text" type="text"></textarea>
+      </div>
+      <div class="divider"></div>
+
+      <a class="copyright" href="https://github.com/abanseka"
+        >abanseka@github.com</a
+      >
+    </main>
+    <div class="logo">
+      <p class="logo-text">VCipher</p>
+    </div>
+    <script src="/index.js"></script>
+    <div class="compare-container">
+      <p>compared text</p>
+    </div>
+  </body>
+</html>
