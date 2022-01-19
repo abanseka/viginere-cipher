@@ -65,6 +65,7 @@ body {
   margin: 0.25rem;
   border-style: none;
   border-radius: 50%;
+  padding: 0.25rem;
 }
 .button:hover {
   background-color: #5d7dae;
@@ -72,16 +73,16 @@ body {
 }
 .encrypt-btn {
   background-color: #ff7171;
-  font-size: 1.2rem;
+  font-size: 0.2rem;
 }
 .decrypt-btn {
   background-color: #9def89;
-  font-size: 1.2rem;
+  font-size: 0.2rem;
 }
 .compare-btn,
 .refresh-btn {
   background-color: #f8d869;
-  font-size: 1.2rem;
+  font-size: 0.2rem;
 }
 
 .key,
