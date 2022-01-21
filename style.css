@@ -73,16 +73,16 @@ body {
 }
 .encrypt-btn {
   background-color: #ff7171;
-  font-size: 0.2rem;
+  font-size: 0.8rem;
 }
 .decrypt-btn {
   background-color: #9def89;
-  font-size: 0.2rem;
+  font-size: 0.8rem;
 }
 .compare-btn,
 .refresh-btn {
   background-color: #f8d869;
-  font-size: 0.2rem;
+  font-size: 0.8rem;
 }
 
 .key,
