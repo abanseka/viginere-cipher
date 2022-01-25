@@ -85,6 +85,10 @@ body {
   font-size: 0.8rem;
 }
 
+.data-text-area {
+  font-size: 0.6rem;
+}
+
 .key,
 .fa-key {
   width: 10rem;
