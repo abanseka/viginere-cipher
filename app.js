@@ -57,7 +57,17 @@ function enablefields() {
   copyButton.disabled = false;
 }
 
+// validate key
+function validateKey() {
+  if (key === "" && plainText.value.length === 1) {
+    disablefields();
+    alert("enter key");
+    refreshButton.disabled = false;
+  }
+}
+
 // Event listeners
+// encrypt text
 encryptMode.addEventListener("click", () => {
   clearfields();
   enablefields();
@@ -70,7 +80,8 @@ encryptMode.addEventListener("click", () => {
     text = e.target.value;
     key = inputKey.value;
 
-    // encrypt text
+    validateKey();
+
     const encrypt = function (text, key) {
       const letterPosition = [];
       text = reduceCase(text);
@@ -89,6 +100,7 @@ encryptMode.addEventListener("click", () => {
   });
 });
 
+// decrypt key
 decryptMode.addEventListener("click", () => {
   clearfields();
   enablefields();
@@ -102,7 +114,8 @@ decryptMode.addEventListener("click", () => {
     text = plainText.value;
     key = inputKey.value;
 
-    // decrypt key
+    validateKey();
+
     const decrypt = function (text, key) {
       const letterPosition = [];
       text = reduceCase(text);
@@ -120,11 +133,13 @@ decryptMode.addEventListener("click", () => {
   });
 });
 
+// copy cipherText
 copyButton.addEventListener("click", () => {
   cipherText.select();
   navigator.clipboard.writeText(cipherText.value);
 });
 
+// refresh cipher
 refreshButton.addEventListener("click", () => {
   clearfields();
   location.reload();
