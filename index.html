@@ -4,16 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>Cipher</title>
   </head>
   <body>
-    <main class="app-container">
-      <input class="key" type="text" />
-      <textarea class="plain-text" type="text"></textarea>
-      <textarea class="cipher-text" type="text"></textarea>
-      <button class="refresh-btn">clear</button>
-    </main>
+    <div class="frame">
+      <main class="app-container">
+        <h3 class="mode">I want to</h3>
+        <span
+          ><button class="encrypt">Encrypt</button><button class="decrypt">Decrypt</button></span
+        >
+        <input class="key" type="text" maxlength="5" placeholder="key" />
+        <textarea class="plain_text" type="text" placeholder="choose mode"></textarea>
+        <textarea class="cipher_text" type="text" readonly></textarea>
+        <div>
+          <button class="refresh-btn">clear</button>
+          <button class="copy-btn">copy</button>
+        </div>
+      </main>
+    </div>
     <script src="/app.js"></script>
   </body>
 </html>
