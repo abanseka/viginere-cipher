@@ -4,66 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      defer
-      src="https://kit.fontawesome.com/65eb18f183.js"
-      crossorigin="anonymous"
-    ></script>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
     <title>Cipher</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
   </head>
   <body>
-    <div class="side-image-container">
-      <img class="side-image" src="/images/karsten-winegeart.jpg" />
-    </div>
-    <main class="app-container">
-      <div class="text-container component-field">
-        <textarea
-          class="text-display input__text data-text-area"
-          type="text"
-          placeholder="Enter Text to be decrypted here"
-        ></textarea>
-      </div>
-      <div class="button-container component-field">
-        <input class="key" type="text" placeholder="key" />
-        <button class="button encrypt-btn">
-          <i class="fas fa-lock"></i>encrypt
-        </button>
-        <button class="button decrypt-btn">
-          <i class="fas fa-unlock"></i> decrypt
-        </button>
-        <button class="button compare-btn">
-          <i class="fas fa-sort"></i> check
-        </button>
-        <button class="button refresh-btn">
-          <i class="fas fa-sync-alt"></i> clear
-        </button>
-      </div>
-      <div class="text-container component-field">
-        <textarea
-          class="text-display output__text data-text-area"
-          type="text"
-          placeholder="Encrypted and decrypted text will show here"
-        ></textarea>
-      </div>
-      <div class="divider"></div>
-
-      <a class="copyright" href="https://github.com/abanseka"
-        >abanseka@github.com</a
-      >
-    </main>
-    <div class="logo">
-      <p class="logo-text">SlyCipher</p>
+    <div class="frame">
+      <main class="app-container">
+        <h3 class="mode">I want to</h3>
+        <span
+          ><button class="encrypt">Encrypt</button><button class="decrypt">Decrypt</button></span
+        >
+        <input class="key" type="text" maxlength="5" placeholder="key" />
+        <textarea class="plain_text" type="text" placeholder="choose mode"></textarea>
+        <textarea class="cipher_text" type="text" readonly></textarea>
+        <div>
+          <button class="refresh-btn">clear</button>
+          <button class="copy-btn">copy</button>
+        </div>
+      </main>
     </div>
     <script src="/app.js"></script>
-    <!-- popup window for compared text result -->
-    <div class="compare-container"></div>
   </body>
 </html>

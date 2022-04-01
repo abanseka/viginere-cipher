@@ -1,16 +1,27 @@
 // Elements
 
-const inputText = document.querySelector(".input__text");
-const outputText = document.querySelector(".output__text");
+const encryptMode = document.querySelector(".encrypt");
+const decryptMode = document.querySelector(".decrypt");
+
+const plainText = document.querySelector(".plain_text");
+const cipherText = document.querySelector(".cipher_text");
 const inputKey = document.querySelector(".key");
-const encryptButton = document.querySelector(".encrypt-btn");
-const decryptButton = document.querySelector(".decrypt-btn");
-const compareButton = document.querySelector(".compare-btn");
+
 const refreshButton = document.querySelector(".refresh-btn");
-const ascii =
-  "abcdefghijklmnopqrstuvwxyz0123456789.,;:'`\"!@#$%^&*()_--=+{}[]|/~<>|\\\t\n ";
+const decryptButton = document.querySelector(".decrypt-btn");
+const copyButton = document.querySelector(".copy-btn");
+
+const ascii = "abcdefghijklmnopqrstuvwxyz0123456789.,;:'`\"!@#$%^&*()_--=+{}[]|/~<>|\\\t\n ";
 let text, key;
 
+// disable fields
+function disablefields() {
+  inputKey.disabled = true;
+  plainText.disabled = true;
+  refreshButton.disabled = true;
+  copyButton.disabled = true;
+}
+disablefields();
 // generateKey
 const genKey = function (string) {
   key = string
@@ -33,68 +44,88 @@ function reduceCase(text) {
   return text.toLowerCase();
 }
 
+// clear fields
+function clearfields() {
+  plainText.value = cipherText.value = inputKey.value = "";
+}
+
+// enablefields
+function enablefields() {
+  inputKey.disabled = false;
+  plainText.disabled = false;
+  refreshButton.disabled = false;
+  copyButton.disabled = false;
+}
+
 // Event listeners
-encryptButton.addEventListener("click", () => {
-  if (inputText.value === "" || inputKey.value === "") {
-    alert("cannot be empty");
-    return;
-  }
-  text = inputText.value;
-  key = inputKey.value;
+encryptMode.addEventListener("click", () => {
+  clearfields();
+  enablefields();
+  plainText.setAttribute("placeHolder", "text to encrypt");
 
-  // encrypt text
-  const encrypt = function (text, key) {
-    const letterPosition = [];
-    text = reduceCase(text);
-    key = reduceCase(key);
+  encryptMode.classList.toggle("encryptMode");
+  decryptMode.classList.remove("decryptMode");
 
-    // get text letter positions in alphabet
-    // for each letter in the text, find it's correspinding index in the alphabet
-    // do same for key then, sum them (LetterIndex + KeyIndex) and divide by entire alphabet
-    // the resulting remainder will be the index of the cipher letter
-    [...text].forEach((_, i) => {
-      const letterIndex = ascii.indexOf(text[i]) + ascii.indexOf(key[i]);
-      letterPosition.push(letterIndex % ascii.length);
-    });
-    return letterPosition
-      .map((charPostion) => ascii.charAt(charPostion))
-      .join("")
-      .toLocaleUpperCase();
-  };
-  outputText.value = encrypt(text, genKey(key));
+  plainText.addEventListener("input", (e) => {
+    text = e.target.value;
+    key = inputKey.value;
+
+    // encrypt text
+    const encrypt = function (text, key) {
+      const letterPosition = [];
+      text = reduceCase(text);
+      key = reduceCase(key);
+
+      [...text].forEach((_, i) => {
+        const letterIndex = ascii.indexOf(text[i]) + ascii.indexOf(key[i]);
+        letterPosition.push(letterIndex % ascii.length);
+      });
+      return letterPosition
+        .map((charPostion) => ascii.charAt(charPostion))
+        .join("")
+        .toLocaleUpperCase();
+    };
+    cipherText.value = encrypt(text, genKey(key));
+  });
 });
 
-decryptButton.addEventListener("click", () => {
-  text = outputText.value;
-  key = inputKey.value;
+decryptMode.addEventListener("click", () => {
+  clearfields();
+  enablefields();
+  plainText.setAttribute("placeHolder", "text to decrypt");
 
-  // decrypt key
-  const decrypt = function (text, key) {
-    const letterPosition = [];
-    text = reduceCase(text);
-    key = reduceCase(key);
+  decryptMode.classList.toggle("decryptMode");
+  encryptMode.classList.remove("encryptMode");
 
-    // get text letter positions in alphabet
-    [...text].forEach((_, i) => {
-      const letterIndex = ascii.indexOf(text[i]) - ascii.indexOf(key[i]);
-      letterPosition.push((letterIndex + ascii.length) % ascii.length);
-    });
-    return capitaliseCase(
-      letterPosition.map((charPostion) => ascii.charAt(charPostion)).join("")
-    );
-  };
-  outputText.value = decrypt(text, genKey(key));
+  plainText.addEventListener("input", () => {
+    if (plainText.value === "") return;
+    text = plainText.value;
+    key = inputKey.value;
+
+    // decrypt key
+    const decrypt = function (text, key) {
+      const letterPosition = [];
+      text = reduceCase(text);
+      key = reduceCase(key);
+
+      // get text letter positions in alphabet
+      [...text].forEach((_, i) => {
+        const letterIndex = ascii.indexOf(text[i]) - ascii.indexOf(key[i]);
+        letterPosition.push((letterIndex + ascii.length) % ascii.length);
+      });
+      const ouput = letterPosition.map((charPostion) => ascii.charAt(charPostion)).join("");
+      return capitaliseCase(ouput);
+    };
+    cipherText.value = decrypt(text, genKey(key));
+  });
 });
 
-compareButton.addEventListener("click", () => {
-  // compare by checking if (Pi + Ki) === Ci
-  // Pi = index of letter in text
-  // Ki = index of letter in key
-  // Ci = index of cipher letter equivalent of letter in text
+copyButton.addEventListener("click", () => {
+  cipherText.select();
+  navigator.clipboard.writeText(cipherText.value);
 });
 
 refreshButton.addEventListener("click", () => {
-  inputText.value = "";
-  outputText.value = "";
-  inputKey.value = "";
+  clearfields();
+  location.reload();
 });
