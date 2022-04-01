@@ -1,14 +1,11 @@
 // Elements
 
-const inputText = document.querySelector(".input__text");
+const plainText = document.querySelector(".plain_text");
 const outputText = document.querySelector(".output__text");
 const inputKey = document.querySelector(".key");
-const encryptButton = document.querySelector(".encrypt-btn");
-const decryptButton = document.querySelector(".decrypt-btn");
-const compareButton = document.querySelector(".compare-btn");
 const refreshButton = document.querySelector(".refresh-btn");
-const ascii =
-  "abcdefghijklmnopqrstuvwxyz0123456789.,;:'`\"!@#$%^&*()_--=+{}[]|/~<>|\\\t\n ";
+
+const ascii = "abcdefghijklmnopqrstuvwxyz0123456789.,;:'`\"!@#$%^&*()_--=+{}[]|/~<>|\\\t\n ";
 let text, key;
 
 // generateKey
@@ -34,11 +31,9 @@ function reduceCase(text) {
 }
 
 // Event listeners
-encryptButton.addEventListener("click", () => {
-  if (inputText.value === "" || inputKey.value === "") {
-    alert("cannot be empty");
-    return;
-  }
+plainText.addEventListener("onChange",()=>{
+	console.log(plainText.textContent)
+})
   text = inputText.value;
   key = inputKey.value;
 
@@ -79,9 +74,7 @@ decryptButton.addEventListener("click", () => {
       const letterIndex = ascii.indexOf(text[i]) - ascii.indexOf(key[i]);
       letterPosition.push((letterIndex + ascii.length) % ascii.length);
     });
-    return capitaliseCase(
-      letterPosition.map((charPostion) => ascii.charAt(charPostion)).join("")
-    );
+    return capitaliseCase(letterPosition.map((charPostion) => ascii.charAt(charPostion)).join(""));
   };
   outputText.value = decrypt(text, genKey(key));
 });
