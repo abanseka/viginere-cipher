@@ -9,7 +9,6 @@
 | - start typing/paste plain text | - start typing/paster encrypted text |
 | - "Copy" encrypted text         | - "Copy" decrypted text              |
 
----
-> **"clear" to refresh or restart the cipher**
-
-![cipher](https://user-images.githubusercontent.com/78860665/161273793-05332ac5-b121-4515-ba21-e5aa9716c9e4.png)
+| Neutral | Encrypt | Decrypt |
+|---------|---------|---------|
+|![Screenshot from 2023-02-18 15-36-38](https://user-images.githubusercontent.com/78860665/219871691-4ad80532-bc9b-4a46-a231-608523d728c3.png)|![Screenshot from 2023-02-18 15-37-45](https://user-images.githubusercontent.com/78860665/219871702-0b9c21ec-e21a-4d74-bcd7-95bcb5e1ac6c.png)|![Screenshot from 2023-02-18 15-38-06](https://user-images.githubusercontent.com/78860665/219871714-24e58c1b-34d5-4313-9c4c-081360a3086d.png)|
