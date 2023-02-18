@@ -4,28 +4,63 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/images/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Cipher</title>
   </head>
   <body>
-    <div class="frame">
-      <main class="app-container">
-        <h3 class="mode">I want to</h3>
-        <span
-          ><button class="encrypt">Encrypt</button><button class="decrypt">Decrypt</button></span
-        >
-        <input class="key" type="text" maxlength="5" placeholder="key" />
-        <textarea class="plain_text" type="text" placeholder="choose mode"></textarea>
-        <textarea class="cipher_text" type="text" readonly></textarea>
-        <div>
-          <button class="refresh-btn">clear</button>
-          <button class="copy-btn">copy</button>
+    <main class="frame">
+      <div class="app-container">
+        <div class="button-container">
+          <button class="btn encrypt">ENCRYPT 🔒</button>
+          <button class="btn decrypt">DECRYPT 🔓</button>
         </div>
-      </main>
-    </div>
+
+        <form class="cipher-form">
+          <div>
+            <input class="key" type="text" maxlength="10" />
+            <label for="key">🔑</label>
+          </div>
+
+          <textarea class="plain_text" type="text"></textarea>
+          <textarea class="cipher_text" type="text" readonly></textarea>
+        </form>
+
+        <div class="button-container">
+          <button class="btn refresh-btn">clear</button>
+          <button class="btn copy-btn">copy</button>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p class="copyright">
+          Copyright &copy abanseka <span class="year"></span>
+        </p>
+      </div>
+    </main>
     <script src="/app.js"></script>
   </body>
 </html>
