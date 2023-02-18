@@ -4,15 +4,6 @@
   box-sizing: border-box;
 }
 
-textarea {
-  padding: 1rem 0.5rem;
-  resize: none;
-  height: fit-content;
-  width: 40%;
-  margin: 0.5rem 0rem;
-  text-align: center;
-}
-
 .frame {
   height: 100vh;
   max-width: 60vmin;
@@ -24,6 +15,11 @@ textarea {
   justify-content: center;
   background-color: #1f252a;
   position: relative;
+}
+
+.logo-container {
+  position: absolute;
+  top: 8%;
 }
 
 .app-container {
@@ -65,17 +61,29 @@ textarea {
   cursor: pointer;
 }
 
+.refresh-btn,
+.copy-btn {
+  font-size: 1rem;
+}
+
+.refresh-btn:hover,
+.copy-btn:hover {
+  color: lightgreen;
+  border-bottom: 1px solid lightskyblue;
+}
+
+.encrypt:hover,
+.decrypt:hover {
+  color: lightsalmon;
+  border: 1px solid lightskyblue;
+}
+
 .key,
 .plain_text,
 .cipher_text {
   outline: none;
   resize: none;
   border: transparent;
-}
-
-.refresh-btn,
-.copy-btn {
-  font-size: 1rem;
 }
 
 .cipher-form {
@@ -108,11 +116,12 @@ textarea {
   width: 100%;
   min-height: 200px;
   text-align: start;
+  padding: 1rem 0.5rem;
 }
 
 .cipher_text {
-  border: 2px dashed gray;
   color: white;
+  border: 2px dashed gray;
   background-color: transparent;
 }
 
