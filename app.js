@@ -1,5 +1,4 @@
 // Elements
-
 const encryptMode = document.querySelector(".encrypt");
 const decryptMode = document.querySelector(".decrypt");
 
@@ -10,9 +9,15 @@ const inputKey = document.querySelector(".key");
 const refreshButton = document.querySelector(".refresh-btn");
 const decryptButton = document.querySelector(".decrypt-btn");
 const copyButton = document.querySelector(".copy-btn");
+const copyrightYear = document.querySelector(".year");
 
-const ascii = "abcdefghijklmnopqrstuvwxyz0123456789.,;:'`\"!@#$%^&*()_--=+{}[]|/~<>|\\\t\n ";
+const ascii =
+  "abcdefghijklmnopqrstuvwxyz0123456789.,;:'`\"!@#$%^&*()_--=+{}[]|/~<>|\\\t\n ";
 let text, key;
+
+// add year to copyright
+const year = new Date().getFullYear();
+copyrightYear.innerText = year;
 
 // disable fields
 function disablefields() {
@@ -21,6 +26,7 @@ function disablefields() {
   refreshButton.disabled = true;
   copyButton.disabled = true;
 }
+
 disablefields();
 // generateKey
 const genKey = function (string) {
@@ -55,6 +61,7 @@ function enablefields() {
   plainText.disabled = false;
   refreshButton.disabled = false;
   copyButton.disabled = false;
+  inputKey.classList.add("keyEnabled");
 }
 
 // validate key
@@ -71,7 +78,6 @@ function validateKey() {
 encryptMode.addEventListener("click", () => {
   clearfields();
   enablefields();
-  plainText.setAttribute("placeHolder", "text to encrypt");
 
   encryptMode.classList.toggle("encryptMode");
   decryptMode.classList.remove("decryptMode");
@@ -104,7 +110,6 @@ encryptMode.addEventListener("click", () => {
 decryptMode.addEventListener("click", () => {
   clearfields();
   enablefields();
-  plainText.setAttribute("placeHolder", "text to decrypt");
 
   decryptMode.classList.toggle("decryptMode");
   encryptMode.classList.remove("encryptMode");
@@ -126,7 +131,9 @@ decryptMode.addEventListener("click", () => {
         const letterIndex = ascii.indexOf(text[i]) - ascii.indexOf(key[i]);
         letterPosition.push((letterIndex + ascii.length) % ascii.length);
       });
-      const ouput = letterPosition.map((charPostion) => ascii.charAt(charPostion)).join("");
+      const ouput = letterPosition
+        .map((charPostion) => ascii.charAt(charPostion))
+        .join("");
       return capitaliseCase(ouput);
     };
     cipherText.value = decrypt(text, genKey(key));
