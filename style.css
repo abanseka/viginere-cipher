@@ -140,3 +140,59 @@
   font-size: 12px;
   letter-spacing: 1px;
 }
+
+@media screen and (max-width: 1024px) {
+  .frame {
+    max-width: 100vmin;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .logo-container {
+    top: 2%;
+  }
+
+  .btn {
+    font-size: 1.2rem;
+  }
+
+  .refresh-btn,
+  .copy-btn {
+    font-size: 0.8rem;
+  }
+
+  .plain_text,
+  .cipher_text {
+    min-height: 150px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .logo-container {
+    top: 2%;
+    left: 2%;
+  }
+
+  .logo-container > img {
+    width: 50%;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-content: center;
+  }
+
+  .container-2 {
+    flex-direction: row;
+    margin-top: -10px;
+  }
+
+  .plain_text,
+  .cipher_text {
+    min-height: 100px;
+  }
+}
